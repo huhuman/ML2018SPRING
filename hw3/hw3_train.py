@@ -42,15 +42,6 @@ y_train = np.reshape(train_data.label.values,(28709,1))
 y_train = keras.utils.to_categorical(y_train,class_num)
 
 
-# In[6]:
-
-
-x_test = []
-for ele in test_data.feature.values:
-    x_test.append(np.reshape(ele,(48,48,1)))
-x_test = np.array(x_test).astype('float32')
-
-
 # In[3]:
 
 
