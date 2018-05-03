@@ -8,7 +8,6 @@ import numpy as np
 from skimage import io
 import os, fnmatch
 import sys
-import matplotlib.pyplot as plt
 
 # In[6]:
 
@@ -46,7 +45,6 @@ picked_img = img_path + '/' + sys.argv[2]
 four_eigenVectors = U.T[:4]
 #reconstruction = []
 img = picked_img
-fig = plt.figure()
 pic = io.imread(img)
 pic = pic.flatten().astype('float32')
 pic -= img_mean
@@ -55,8 +53,5 @@ recons -= np.min(recons)
 recons /= np.max(recons)
 recons = (recons*255).astype(np.uint8)
 recons = recons.reshape(600,600,3)
-#reconstruction.append(recons)
-plt.title(sys.argv[2])
-plt.imshow(recons)
-plt.savefig('reconstruction.jpg')
+io.imsave('reconstruction.jpg',recons)
 
