@@ -8,6 +8,7 @@ import numpy as np
 from skimage import io
 import os, fnmatch
 import sys
+import matplotlib.pyplot as plt
 
 # In[6]:
 
@@ -16,7 +17,7 @@ img_path = sys.argv[1]
 img_list = fnmatch.filter(os.listdir(img_path), '*.jpg')
 All_imgs = []
 for img in img_list:
-    All_imgs.append(io.imread(img_path+img))
+    All_imgs.append(io.imread(img_path+'/'+img))
 All_imgs = np.array(All_imgs)
 
 
@@ -46,7 +47,7 @@ four_eigenVectors = U.T[:4]
 #reconstruction = []
 img = picked_img
 fig = plt.figure()
-pic = io.imread('./Aberdeen/'+img)
+pic = io.imread(img)
 pic = pic.flatten().astype('float32')
 mu = np.mean(pic)
 pic -= mu
@@ -56,6 +57,7 @@ recons /= np.max(recons)
 recons = (recons*255).astype(np.uint8)
 recons = recons.reshape(600,600,3)
 #reconstruction.append(recons)
-plt.title(img)
-plt.savefig(img)
+plt.title(sys.argv[2])
+plt.imshow(recons)
+plt.savefig('reconstruction.jpg')
 
