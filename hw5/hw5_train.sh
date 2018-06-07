@@ -1,2 +1,2 @@
-curl -sL 'https://github.com/huhuman/ML2018SPRING/releases/download/1.0/vectors_all_300.txt'
+curl https://www.dropbox.com/s/sbf7yh91h2yrw2l/vectors_all_300.txt?dl=1 -O -J -L
 python3 hw5_train.py $1 $2
