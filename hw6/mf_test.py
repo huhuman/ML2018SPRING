@@ -17,13 +17,7 @@ test = pd.read_csv(sys.argv[1])
 # In[3]:
 
 
-import keras.models as kmodels
-import keras.layers as klayers
-from keras.layers import Input, Embedding, Dense, Dropout, dot
-from keras.layers import Reshape, Flatten, Lambda
-from keras.callbacks import EarlyStopping,ModelCheckpoint
 import keras.backend as K
-import keras
 
 
 # In[4]:
@@ -38,7 +32,7 @@ def rmse(y_true, y_pred):
 
 
 from keras.models import load_model
-model = load_model('model/0602_1612_model.h5', custom_objects={'rmse': rmse})
+model = load_model('model.h5', custom_objects={'rmse': rmse})
 prediction = model.predict([test.UserID.values,test.MovieID.values])
 
 with open(sys.argv[2],'w') as f:
